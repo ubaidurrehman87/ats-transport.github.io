@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>ATS Booking Form</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="html.design">
+<!-- description -->
+<meta name="description" content="Wizard Form with Validation - Responsive">
+<link rel="shortcut icon" href="img/form-images/favicon.ico">
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="css/form-css/bootstrap.min.css">
+<!-- Fontawesome CSS -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/form-css/all.css">
+<!-- Fonts and icons -->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700" rel="stylesheet"> 
+<!-- Reset CSS -->
+<link rel="stylesheet" href="css/form-css/reset.css">
+<!-- Style CSS -->
+<link rel="stylesheet" href="css/form-css/style.css">
+<!-- Responsive  CSS -->
+<link rel="stylesheet" href="css/form-css/responsive.css">
+<!-- Date Time Picker -->
+<link rel="stylesheet" href="css/picker/simplepicker.css">
+
+<style type="text/css">
+		
+         #loading{
+            background:#fff;
+            opacity: 1;
+            position: center;
+            z-index: 10;
+            top:0;
+            width: 100%;
+            height:100%;
+        }
+        #loader{
+            color:#fff;
+            width:250px;
+            height:250px;
+            /*margin:300px auto;*/
+            /*margin-left: 700px;*/
+        
+        }
+        .footer-copyright-area{
+            margin-top: 170px;
+        }
+    </style>
+    <script type="text/javascript">
+     	
+     	setTimeout(showpanel, 10000)
+     	function showpanel() {     
+		       $(".navigation").hide();
+		       $("#loading").children("#loader").fadeIn(10000);
+    	}
+        window.addEventListener("load", function(){
+            var load = document.getElementById("loading");
+          
+            document.body.removeChild(load);
+           
+           
+        });
+       
+     
+        // window.onload = function() {
+        // 	 $('#wName').delay(3000).focus();
+        // 	 var load = document.getElementById("load");
+          
+        //     document.body.removeChild(load);
+        //     // document.getElementById("wName").focus();
+        // }
+    </script>
+</head>
+<!-- <div id="loading">
+        <div id="loader"><img src="img/Loader/1.gif" /></div>
+</div> -->
+<body>
+<div class="stop-scrolling">
+<div class="wizard-main">
+	<div id="particles-js"></div>
+	<div class="container">
+		<!-- <div class="row">
+			<div class="col-lg-12">
+				<h2 class="title-wb">Wizard Form with Validation</h2>
+			</div>
+		</div> -->
+		<div class="row">
+			<div class="col-lg-6 banner-sec">
+				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+					<ol class="carousel-indicators">
+						<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+						<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+						<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+					</ol>
+					<div class="carousel-inner" role="listbox">
+						<div class="carousel-item active">
+							<img class="d-block img-fluid" src="img/form-images/4.jpg" alt="First slide">
+							<div class="carousel-caption d-none d-md-block">
+								<div class="banner-text">
+									<h2>Any load, Any size, Anywhere</h2>
+									<p>ATS is leading third party logistics provider that specializes in transportation management and freight broker related services.</p>
+								</div>	
+							</div>
+						</div>
+						<div class="carousel-item">
+							<img class="d-block img-fluid" src="img/form-images/3.jpg" alt="First slide">
+							<div class="carousel-caption d-none d-md-block">
+								<div class="banner-text">
+									<h2>Your Freight, Our Resources</h2>
+									<p>Specific Drivers, Labours, and Equipment will be assigned to exclusively handle your freight, increasing efficiency and lowering costs.</p>
+								</div>	
+							</div>
+						</div>
+						<div class="carousel-item">
+							<img class="d-block img-fluid" src="img/form-images/2.jpg" alt="First slide">
+							<div class="carousel-caption d-none d-md-block">
+								<div class="banner-text">
+									<h2>Speedy Service, Where it Counts</h2>
+									<p>Speed is the name of the game. But that doesn't mean we cut corners. Our systematic workflow allows us to get your freight from Point A to Point B in a fast and affordable way.</p>
+								</div>	
+							</div>
+						</div>
+					</div>	   
+				</div>
+			</div>
+			<div class="col-lg-6 login-sec">
+				<div class="login-sec-bg">
+					<div class="row">
+					<div class="col-lg-3">
+					<img src="img/Logo/main1.png" width="80px;">
+					</div>
+					<div class="col-lg-9">
+					<h2 class="text-cent">Booking Information</h2>
+					</div>
+					</div>
+					<form id="booking-form" action="https://ats-api.herokuapp.com/booking" method="post" style="display: none;">
+						<h3>Location</h3>
+						<fieldset class="form-input">
+							<h4>Location Information</h4>
+
+							<label for="userName">Select Your Company<span style="color: red">*</span></label>
+							<select id="selectCompany" name="companyName" class="form-control required" required="This Field is required">
+								<option >Select Company </option>
+								<option value="Stiles">Shabbir Tiles</option>
+								<option value="Orient">Orient</option>
+								<option value="Pacific Oil">Pacific Oil</option>
+								<option value="ETM">Ebrahim Textile</option>
+								<option value="AlKaram">Al-Karam Textile</option>
+								<option value="TATA">Tata Pakistan</option>
+								<option value="Gul Ahmed">Gul Ahmed Textile</option>
+								<option value="1">Other</option>
+							</select>
+
+							<input id="otherCompany" name="companyName" type="hidden" placeholder="Other Company Name" style="margin-top: 12px;" class="form-control required">
+							
+							<label for="pickup" style="margin-top: 12px;">Goods Pick up Location <span style="color: red">*</span></label>
+							<input id="pickup" name="pickup" type="text" class="form-control required">
+							<label for="lname">Goods Drop off Location <span style="color: red">*</span></label>
+							<input id="dropoff" name="dropoff" type="text" class="form-control required">
+							<label for="job">Pickup Date and Time<span style="color: red">*</span></label>
+							<!-- <div class="row">
+								<div class="col-lg-4 col-md-4 col-sm-6">
+									<button class="simplepicker-btn" >Show Picker</button>
+								</div>
+								<div class="col-lg-8 col-md-8 col-sm-6">
+									<input id="datetime" name="datetime" type="text" placeholder="Pick Date and Time"  class="form-control">
+								</div>
+							</div> -->
+							<div class="input-group mb-3">
+							  <div class="input-group-prepend">
+							    <a class="btn btn-outline-secondary" id="mybutton" type="button" style="height: 38px;">Pick date</a>
+							  </div>
+							  <input id="datetime" name="datetime" type="text" placeholder="Pick Date and Time"  class="form-control" >
+							</div>
+						
+						</fieldset>
+
+						<h3>Personal</h3>
+						<fieldset class="form-input">
+							<h4>Personal Information</h4>
+							<div class="row">
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-xs-12">
+									<label for="fname" style="margin-top: 12px;">First Name <span style="color: red">*</span></label>
+									<input id="fname" name="fname" type="text" class="form-control required">
+								</div>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-xs-12">
+									<label for="lname" style="margin-top: 12px;">Last Name <span style="color: red">*</span></label>
+									<input id="lname" name="lname" type="text" class="form-control required">
+								</div>
+							</div>
+							<label for="contact">Mobile Number#<span style="color: red">*</span></label>
+							<input id="contactno" name="contactno" type="text" data-mask="99999-9999999-9" class="form-control required">
+							<label for="email">Email</label>
+							<input id="email" name="email" type="email" class="form-control ">
+							<label for="deptName" style="margin-top: 12px;">Department Name <span style="color: red">*</span></label>
+							<input id="deptName" name="deptName" type="text" class="form-control required">
+							<label for="job">Your Job Title<span style="color: red">*</span></label>
+							<input id="jobtitle" name="jobtitle" type="text" class="form-control required">
+							
+
+						</fieldset>
+
+						<h3>Goods</h3>
+						<fieldset class="form-input">
+							<h4>Goods Detail</h4>
+							<label for="goods">Goods Category<span style="color: red">*</span></label>
+							<select id="selectGoods" name="goods" class="form-control required" required="This Field is required">
+								<option >Select Goods Category</option>
+								<option value="Tiles">Tiles</option>
+								<option value="Oil">Oil</option>
+								<option value="Cement">Cement</option>
+								<option value="Flour">Flour</option>
+								<option value="Sugar">Sugar</option>
+								<option value="Garments">Garments</option>
+								<option value="2">Other</option>
+							</select>
+							<input id="otherGoods" name="goods" type="hidden" placeholder="Other Goods" style="margin-top: 12px;" class="form-control required">
+
+							<label for="weight" style="margin-top: 12px;">Weight(1000kg) / Quantity (100 qt)<span style="color: red">*</span></label>
+							<input id="weight" name="weight" type="text" class="form-control required">
+							<label for="vehicle">Choose Vehicle<span style="color: red">*</span></label>
+							<select id="selectVehicle" name="vehicle" class="form-control required" required="This Field is required">
+								<option >Select Vehicle</option>
+								<option value="10 wheeler">10 wheeler Truck</option>
+								<option value="12 wheeler">12 Wheeler Truck</option>
+								<option value="22 wheeler">22 Wheeler Truck</option>
+								<option value="Shehzore/Mazda">Shehzore/Mazda</option>
+							</select>
+							
+						
+
+						</fieldset>
+
+						
+					</form>			
+				</div>
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<p class="copyright text-center" style="color: black;">All Rights Reserved. &copy; 2020 <a href="#">Booking Form</a> Design By : 
+					<a href="http://ubaidurrehman.tech/">Ubaid Ur Rehman</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<!-- jquery latest version -->
+<script src="js/form-js/jquery.min.js"></script>
+<!-- popper.min.js -->
+<script src="js/form-js/popper.min.js"></script>    
+<!-- bootstrap js -->
+<script src="js/form-js/bootstrap.min.js"></script>
+<!-- jquery.steps js -->
+<script src='https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.js'></script>
+<script src="js/form-js/jquery.steps.js"></script>
+<!-- Sweet Alert -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<!-- particles js -->
+<script src="js/form-js/particles.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		particlesJS("particles-js", 
+			{
+			  "particles": {
+				"number": {
+				  "value": 1000,
+				  "density": {
+					"enable": true,
+					"value_area": 1000
+				  }
+				},
+				"color": {
+				  "value": "#DE6262"
+				},
+				"shape": {
+				  "type": "circle",
+				  "stroke": {
+					"width": 0,
+					"color": "#000000"
+				  },
+				  "polygon": {
+					"nb_sides": 5
+				  },
+				  "image": {
+					"src": "img/github.svg",
+					"width": 100,
+					"height": 100
+				  }
+				},
+				"opacity": {
+				  "value": 1,
+				  "random": true,
+				  "anim": {
+					"enable": true,
+					"speed": 1,
+					"opacity_min": 0,
+					"sync": false
+				  }
+				},
+				"size": {
+				  "value": 3,
+				  "random": true,
+				  "anim": {
+					"enable": false,
+					"speed": 4,
+					"size_min": 0.3,
+					"sync": false
+				  }
+				},
+				"line_linked": {
+				  "enable": false,
+				  "distance": 150,
+				  "color": "#ffffff",
+				  "opacity": 0.4,
+				  "width": 1
+				},
+				"move": {
+				  "enable": true,
+				  "speed": 1,
+				  "direction": "none",
+				  "random": true,
+				  "straight": false,
+				  "out_mode": "out",
+				  "bounce": false,
+				  "attract": {
+					"enable": false,
+					"rotateX": 600,
+					"rotateY": 600
+				  }
+				}
+			  },
+			  "interactivity": {
+				"detect_on": "canvas",
+				"events": {
+				  "onhover": {
+					"enable": true,
+					"mode": "bubble"
+				  },
+				  "onclick": {
+					"enable": true,
+					"mode": "repulse"
+				  },
+				  "resize": true
+				},
+				"modes": {
+				  "grab": {
+					"distance": 400,
+					"line_linked": {
+					  "opacity": 1
+					}
+				  },
+				  "bubble": {
+					"distance": 250,
+					"size": 0,
+					"duration": 2,
+					"opacity": 0,
+					"speed": 3
+				  },
+				  "repulse": {
+					"distance": 400,
+					"duration": 0.4
+				  },
+				  "push": {
+					"particles_nb": 4
+				  },
+				  "remove": {
+					"particles_nb": 2
+				  }
+				}
+			  },
+			  "retina_detect": true
+			}
+    	);
+	});
+</script>
+
+<script>
+	var form = $("#booking-form").show();
+
+	form.steps({
+		headerTag: "h3",
+		bodyTag: "fieldset",
+		transitionEffect: "slideLeft",
+		onStepChanging: function (event, currentIndex, newIndex)
+		{
+			// Allways allow previous action even if the current form is not valid!
+			if (currentIndex > newIndex)
+			{
+				return true;
+			}
+			// Forbid next action on "Warning" step if the user is to young
+			if (newIndex === 3 && Number($("#age").val()) < 18)
+			{
+				return false;
+			}
+			// Needed in some cases if the user went back (clean up)
+			if (currentIndex < newIndex)
+			{
+				// To remove error styles
+				form.find(".body:eq(" + newIndex + ") label.error").remove();
+				form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+			}
+			form.validate().settings.ignore = ":disabled,:hidden";
+			return form.valid();
+		},
+		onStepChanged: function (event, currentIndex, priorIndex)
+		{
+			// Used to skip the "Warning" step if the user is old enough.
+			if (currentIndex === 2 && Number($("#age").val()) >= 18)
+			{
+				form.steps("next");
+			}
+			// Used to skip the "Warning" step if the user is old enough and wants to the previous step.
+			if (currentIndex === 2 && priorIndex === 3)
+			{
+				form.steps("previous");
+			}
+		},
+		onFinishing: function (event, currentIndex)
+		{
+			form.validate().settings.ignore = ":disabled";
+			return form.valid();
+		},
+		onFinished: function (event, currentIndex)
+		{
+			alert("Submitted!");
+		}
+	}).validate({
+		errorPlacement: function errorPlacement(error, element) { element.before(error); },
+		rules: {
+			confirm: {
+				equalTo: "#password"
+			}
+		}
+	});
+</script>
+<!-- Others -->
+<script>
+$( "#selectCompany" )
+  .change(function() {
+    var str = "";
+    // $( "select option:selected" ).each(function() {
+    //   str += $( this ).text();
+
+    // });
+    if($(this).val()=='1')
+    {   
+    	// $(this).val('');
+    	$('#otherCompany').attr('value','');
+    	$('input[name$="companyName"]').val('');
+    	$('#booking-form').find('input:hidden').attr({type:"text"});
+    }
+    else{
+    	$('#booking-form').find('#otherCompany').attr({type:"hidden"});
+    }
+    
+  })
+  .trigger( "change" );
+</script>
+<script>
+$( "#selectGoods" )
+  .change(function() {
+    var str = "";
+    // $( "select option:selected" ).each(function() {
+    //   str += $( this ).text();
+
+    // });
+    if($(this).val()=='2')
+    {   
+    	// $(this).val('');
+    	$('#otherGoods').attr('value','');
+    	$('#booking-form').find('input:hidden').attr({type:"text"});
+    }
+    else{
+    	$('#booking-form').find('#otherGoods').attr({type:"hidden"});
+    }
+    
+  })
+  .trigger( "change" );
+</script>
+
+<!-- Date Time Picker -->
+<script src="js/picker/simplepicker.js" ></script>
+<script>
+    let simplepicker = new SimplePicker({
+      zIndex: 10
+    });
+
+
+    const $button = document.getElementById("mybutton")
+    const $eventLog = document.querySelector('#datetime');
+    $button.addEventListener('click', (e) => {
+      simplepicker.open();
+    });
+
+    // $eventLog.innerHTML += '\n\n';
+    simplepicker.on('submit', (date, readableDate) => {
+      // $("#datetime").val(readableDate) ;
+      $('input[name$="datetime"]').val(readableDate);
+    });
+
+    simplepicker.on('close', (date) => {
+      // $("#datetime").val(readableDate) ;
+      $('input[name$="datetime"]').val(readableDate);
+    });
+  </script>
+
+
+</body>
+</html>
